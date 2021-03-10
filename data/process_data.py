@@ -58,6 +58,12 @@ def clean_data(df):
         # convert column from string to numeric
         categories[column] = categories[column].astype(int)
 
+    # Remove columns with single value
+    for col in categories.columns.tolist():
+        if len(categories[col].unique()) == 1:
+            print("Removing column {} as it has only 1 value".format(col))
+            categories.drop(columns=[col, ], inplace=True)
+
     df.drop(columns=["categories", ], inplace=True)
 
     df = pd.concat([df, categories], axis=1)
