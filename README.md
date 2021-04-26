@@ -49,5 +49,11 @@ The files in this repository have the following structure:
 |- train_classifier.py
 |- classifier.pkl  # saved model 
 
+- visualization.png # visualization from dataset
+
 - README.md
 ```
+
+### Visual Insight on Dataset
+
+[Distribution across categories](https://github.com/anushakamath97/disaster_response_project/blob/main/visualization.png)
