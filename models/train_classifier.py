@@ -20,10 +20,12 @@ def load_data(database_filepath):
     """
     This methods loads data from a .db to a pandas dataframe.
 
-    database_filepath: relative path to database file
+    Args:
+        - database_filepath: relative path to database file
     NOTE: the table name saved in db file is assumed Disaster_Data
 
-    return: pandas dataframe
+    Returns:
+        pandas dataframe
     """
     # load data from database
     engine = create_engine('sqlite:///{}'.format(database_filepath))
@@ -41,6 +43,12 @@ def tokenize(text):
     1. Normalization
     2. Lemmatization
     3. Removal of stop words
+
+    Args:
+        - text: String to perform the tokenization.
+
+    Returns:
+        - list of tokens in the string.
     """
     # Define the set of stop words in english language
     stop_words = stopwords.words("english")
@@ -58,7 +66,11 @@ def tokenize(text):
 
 def build_model():
     """
-    Build the machine learning pipeline model to train on the data
+    Build the machine learning pipeline model to train on the data.
+
+    Returns:
+        A ML model that has can call fit on training data and
+        predict on testing data.
     """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -87,6 +99,12 @@ def evaluate_model(model, X_test, Y_test, category_names):
     """
     Predict the genre of text using the model and find the
     F1score, recall, precision and accuracy for each category
+
+    Args:
+        - model: ML model after training.
+        - X_test: input test data
+        - Y_test: actual output for test data
+        - category_names: list of column names in output.
     """
     y_pred = model.predict(X_test)
 
@@ -102,6 +120,10 @@ def evaluate_model(model, X_test, Y_test, category_names):
 def save_model(model, model_filepath):
     """
     Save the trained model to a file as pickle
+
+    Args:
+        - model: trained model to save
+        - model_filepath: relative path (with filename) to save the model.
     """
     # save the model to disk
     pickle.dump(model, open(model_filepath, 'wb'))
