@@ -56,4 +56,4 @@ The files in this repository have the following structure:
 
 ### Visual Insight on Dataset
 
-[Distribution across categories](https://github.com/anushakamath97/disaster_response_project/blob/main/visualization.png)
+![Distribution across categories](https://github.com/anushakamath97/disaster_response_project/blob/main/visualization.png "Distribution across categories")
